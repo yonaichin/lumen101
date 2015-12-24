@@ -1,21 +1,75 @@
-## Lumen PHP Framework
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+## Things should've known before this project
+### 1. Install Composer 
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+```
+curl -sS https://getcomposer.org/installer | php
 
-## Official Documentation
+```
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+``` 
+mv composer.phar /usr/local/bin/composer
+```
+```
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+```
 
-## Security Vulnerabilities
+### 2. Install lumen
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+```
+composer global require "laravel/lumen-installer=~1.0”
+```
 
-### License
+### 3. Make it accessible through zsh
+```
+export PATH="$PATH:$HOME/.composer/vendor/bin”
+```
+```
+echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.zshrc
+```
+```
+source ~/.zshrc
+```
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+### 4. PHP Version
+
+1. PHP >= 5.5.9
+2. [PHP version manager for Mac](https://github.com/wilmoore/php-version)
+
+
+
+## Get Started
+### Download project
+```
+git clone https://github.com/yonaichin/lumen101.git && cd lumen101
+```
+### Install packages
+```
+composer install
+```
+### Setup database (Mysql)
+```
+cp .env.example .env # make sure to create database first
+```
+
+
+```
+php artisan migrate # migrate tables
+```
+
+```
+php artisan db:seed # seed database for mock datas
+```
+
+### Run and visit [http://localhost:8000](http://localhost:8000)
+```
+php artisan serve
+```
+
+
+### Available routes
+1. GET 'api/article'  => index
+2. GET 'api/article/{id}' => get article
+3. POST 'api/article' => save article
+4. POST 'api/article/{id}' => update article
+5. DELETE 'api/article/{id}' => delete article
